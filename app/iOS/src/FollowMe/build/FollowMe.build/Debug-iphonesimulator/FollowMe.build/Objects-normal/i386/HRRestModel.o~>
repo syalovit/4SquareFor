@@ -1,5 +1,0 @@
-/Users/yalo/4SquareFor/app/iOS/src/FollowMe/Classes/HTTPRiot/HRRestModel.m:141: warning: incomplete implementation of class 'HRRestModel'
-/Users/yalo/4SquareFor/app/iOS/src/FollowMe/Classes/HTTPRiot/HRRestModel.m:141: warning: method definition for '-postPath:withOptions:object:' not found
-/Users/yalo/4SquareFor/app/iOS/src/FollowMe/Classes/HTTPRiot/HRRestModel.m:141: warning: method definition for '-getPath:withOptions:object:' not found
-/Users/yalo/4SquareFor/app/iOS/src/FollowMe/Classes/HTTPRiot/HRRestModel.m:141: warning: method definition for '-setFormat:' not found
-/Users/yalo/4SquareFor/app/iOS/src/FollowMe/Classes/HTTPRiot/HRRestModel.m:141: warning: method definition for '-setBaseURL:' not found
