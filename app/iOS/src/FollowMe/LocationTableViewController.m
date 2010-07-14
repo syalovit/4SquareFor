@@ -10,6 +10,7 @@
 @implementation LocationTableViewController
 
 - (void)viewDidLoad {
+	[super viewDidLoad];
 	locationController = [[MyCLController alloc] init];
 	
 	[[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
@@ -164,6 +165,7 @@
 	{
 		now.location = aRecord;
 		now.start = [NSDate date];
+		
 	}
 	return nil;
 }

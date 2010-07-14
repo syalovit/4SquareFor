@@ -43,6 +43,7 @@
 		33D24ED311EA75D0007953C6 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D24EB611EA75D0007953C6 /* DDXMLNode.m */; };
 		33D24ED411EA75D0007953C6 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D24EB911EA75D0007953C6 /* NSStringAdditions.m */; };
 		33D24F8A11EA997E007953C6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D24F8911EA997E007953C6 /* CoreLocation.framework */; };
+		33D253B711EC194B007953C6 /* RecordingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D253B611EC194B007953C6 /* RecordingController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +122,8 @@
 		33D24EB811EA75D0007953C6 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSStringAdditions.h; path = Classes/HTTPRiot/Vendor/KissXML/NSStringAdditions.h; sourceTree = SOURCE_ROOT; };
 		33D24EB911EA75D0007953C6 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStringAdditions.m; path = Classes/HTTPRiot/Vendor/KissXML/NSStringAdditions.m; sourceTree = SOURCE_ROOT; };
 		33D24F8911EA997E007953C6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		33D253B511EC194B007953C6 /* RecordingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordingController.h; path = ../RecordingController.h; sourceTree = "<group>"; };
+		33D253B611EC194B007953C6 /* RecordingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordingController.m; path = ../RecordingController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* FollowMe-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FollowMe-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +145,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				33D253B511EC194B007953C6 /* RecordingController.h */,
+				33D253B611EC194B007953C6 /* RecordingController.m */,
 				33D24E6811EA75D0007953C6 /* HTTPRiot */,
 				33D2486011EA4CC6007953C6 /* Foursquare.h */,
 				33D2486111EA4CC6007953C6 /* Foursquare.m */,
@@ -200,9 +205,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				33D24F8911EA997E007953C6 /* CoreLocation.framework */,
 			);
 			name = Frameworks;
@@ -421,6 +426,7 @@
 				33D24ED211EA75D0007953C6 /* DDXMLElementAdditions.m in Sources */,
 				33D24ED311EA75D0007953C6 /* DDXMLNode.m in Sources */,
 				33D24ED411EA75D0007953C6 /* NSStringAdditions.m in Sources */,
+				33D253B711EC194B007953C6 /* RecordingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
