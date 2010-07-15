@@ -9,11 +9,11 @@
 @interface Foursquare (PrivateAPI)
 + (void)        get:(NSString *)methodName
          withParams:(NSDictionary *)params 
-		   callback:(FoursquareCallback)callback;
+		   callback:(NSObject *)callback;
 
 + (void)       post:(NSString *)methodName
 		 withParams:(NSDictionary *)params
-		   callback:(FoursquareCallback)callback;
+		   callback:(NSObject *)callback;
 @end
 
 @implementation Foursquare
@@ -26,14 +26,14 @@
 	
 }
 
-+ (void)listCities:(FoursquareCallback)callback
++ (void)listCities:(NSObject *)callback
 {
 	[self get:@"cities" withParams:nil callback:callback];
 }
 
 + (void)cityNearestLatitude:(NSString *)geoLat 
 				  longitude:(NSString *)geoLong 
-				   callback:(FoursquareCallback)callback 
+				   callback:(NSObject *)callback 
 {	
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
 							geoLat, @"geolat", 
@@ -43,7 +43,7 @@
 }
 
 + (void)switchToCity:(NSNumber *)cityId 
-			callback:(FoursquareCallback)callback 
+			callback:(NSObject *)callback 
 {
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
 							cityId, @"cityid", 
@@ -53,7 +53,7 @@
 
 + (void)recentFriendCheckinsNearLatitude:(NSNumber *)geoLat
 							   longitude:(NSNumber *)geoLong
-								callback:(FoursquareCallback)callback
+								callback:(NSObject *)callback
 {	
 	NSMutableDictionary *params = [NSMutableDictionary dictionary];
 	
@@ -76,7 +76,7 @@
 			tellFacebook:(BOOL)tellFacebook
 				latitude:(NSString *)geoLat
 			   longitude:(NSString *)geoLong
-				callback:(FoursquareCallback)callback 
+				callback:(NSObject *)callback 
 {	
 	NSMutableDictionary *params = [NSMutableDictionary dictionary];
 	
@@ -108,7 +108,7 @@
 }
 
 + (void)checkinHistoryWithLimit:(NSNumber *)limit 
-					   callback:(FoursquareCallback)callback 
+					   callback:(NSObject *)callback 
 {
 	[self doesNotRecognizeSelector:_cmd];
 }
@@ -116,7 +116,7 @@
 + (void)detailForUser:(NSNumber *)userId 
 		   showBadges:(BOOL)showBadges 
 			showMayor:(BOOL)showMayor 
-			 callback:(FoursquareCallback)callback 
+			 callback:(NSObject *)callback 
 {
 	NSMutableDictionary *params = [NSMutableDictionary dictionary];
 	
@@ -133,7 +133,7 @@
 }
 
 + (void)friendsForUser:(NSNumber *)userId  			 
-			  callback:(FoursquareCallback)callback
+			  callback:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
@@ -142,7 +142,7 @@
 				 longitude:(double)geoLong
 				  matching:(NSString *)keywordSearch  
 					 limit:(NSNumber *)limit   
-				  callback:(FoursquareCallback)callback
+				  callback:(NSObject *)callback
 {	
 	NSMutableDictionary *params = [NSMutableDictionary dictionary];
 	
@@ -163,7 +163,7 @@
 
 
 + (void)detailForVenue:(NSNumber *)venueId
-			  callback:(FoursquareCallback)callback 
+			  callback:(NSObject *)callback 
 {
 	NSDictionary *params = [NSDictionary dictionaryWithObject:[venueId stringValue] 
 													   forKey:@"vid"];
@@ -178,7 +178,7 @@
 			 zip:(NSString *)zip
 		  cityId:(NSNumber *)cityId
 		   phone:(NSString *)phone
-		callback:(FoursquareCallback)callback
+		callback:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
@@ -186,92 +186,92 @@
 + (void)tipsNearLatitude:(NSString *)geoLat
 			   longitude:(NSString *)geoLong
 				   limit:(NSNumber *)limit 			
-				callback:(FoursquareCallback)callback 
+				callback:(NSObject *)callback 
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
 
 + (void)addTip:(NSString *)tip 
 	  forVenue:(NSNumber *)venueId 
-	  callback:(FoursquareCallback)callback
+	  callback:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
 
 + (void)addTodo:(NSString *)todo 
 	   forVenue:(NSNumber *)venueId 		
-	   callback:(FoursquareCallback)callback
+	   callback:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
 
-+ (void)friendRequests:(FoursquareCallback)callback
++ (void)friendRequests:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
 
 + (void)approveFriendRequest:(NSNumber *)userId 
-					callback:(FoursquareCallback)callback
+					callback:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
 
 + (void)denyFriendRequest:(NSNumber *)userId 
-				 callback:(FoursquareCallback)callback
+				 callback:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
 
 + (void)sendFriendRequest:(NSNumber *)userId
-				 callback:(FoursquareCallback)callback
+				 callback:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
 
 + (void)findFriendsByName:(NSString *)nameQuery
-				 callback:(FoursquareCallback)callback
+				 callback:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
 
 + (void)findFriendsByPhone:(NSString *)phoneNumberQuery
-				  callback:(FoursquareCallback)callback
+				  callback:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
 
 + (void)findFriendsByTwitter:(NSString *)twitterQuery
-					callback:(FoursquareCallback)callback
+					callback:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
 
-+ (void)setPingsOff:(FoursquareCallback)callback
++ (void)setPingsOff:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
 
-+ (void)setPingsOffFor:(NSNumber *)userId callback:(FoursquareCallback)callback
++ (void)setPingsOffFor:(NSNumber *)userId callback:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
 
-+ (void)setPingsOn:(FoursquareCallback)callback
++ (void)setPingsOn:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
 
-+ (void)setPingsOnFor:(NSNumber *)userId callback:(FoursquareCallback)callback
++ (void)setPingsOnFor:(NSNumber *)userId callback:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
 
-+ (void)goodnight:(FoursquareCallback)callback
++ (void)goodnight:(NSObject *)callback
 {
 	[self doesNotRecognizeSelector:_cmd];	
 }
 
-+ (void)test:(FoursquareCallback)callback
++ (void)test:(NSObject *)callback
 {
 	[self get:@"test" withParams:nil callback:callback];
 }
@@ -298,45 +298,38 @@
 #pragma mark HRRequestOperation Delegates
 + (void)restConnection:(NSURLConnection *)connection
 	  didFailWithError:(NSError *)error 
-				object:(id)object 
-{
-	FoursquareCallback callback = (FoursquareCallback)object;
-    callback(NO, error);
-	[callback release];
+				object:(NSObject *)object 
+{	
+    [object callback:NO, error:error];
 }
 
 + (void)restConnection:(NSURLConnection *)connection 
 	   didReceiveError:(NSError *)error 
 			  response:(NSHTTPURLResponse *)response 
-				object:(id)object 
+				object:(NSObject *)object 
 {
-	FoursquareCallback callback = (FoursquareCallback)object;
-    callback(NO, error);
-	[callback release];
+    [object callback:NO, error:error];
 }
 
-+ (void)restConnection:(NSURLConnection *)connection didReceiveParseError:(NSError *)error responseBody:(NSString *)body object:(id)object;
++ (void)restConnection:(NSURLConnection *)connection didReceiveParseError:(NSError *)error responseBody:(NSString *)body object:(NSObject *)object;
 {
-	FoursquareCallback callback = (FoursquareCallback)object;
-    callback(NO, error);
-	[callback release];
+    [object callback:NO, error:error];
 }
 
-+ (void)restConnection:(NSURLConnection *)connection didReturnResource:(id)resource object:(id)object 
-{
-	FoursquareCallback callback = (FoursquareCallback)object;
-    callback(TRUE, resource);
-	[callback release];
++ (void)restConnection:(NSURLConnection *)connection didReturnResource:(id)resource object:(NSObject *)object 
+{	
+
+	[object callback: TRUE result:resource];
+
 }
 
 #pragma mark Private methods
 
 + (void)        get:(NSString *)methodName
          withParams:(NSDictionary *)params 
-		   callback:(FoursquareCallback)callback
+		   callback:(NSObject *)callback
 {
 	
-	callback = [callback copy];
 	
 	NSString *path = [NSString stringWithFormat:@"/%@.json", methodName];
 
@@ -350,10 +343,9 @@
 
 + (void)       post:(NSString *)methodName
 		 withParams:(NSDictionary *)params
-		   callback:(FoursquareCallback)callback 
+		   callback:(NSObject *)callback 
 {
 	
-	callback = [callback copy];
 	
 	NSString *path = [NSString stringWithFormat:@"/%@.json", methodName];
 	NSDictionary *options = [NSDictionary dictionaryWithObject:params forKey:kHRClassAttributesParamsKey];

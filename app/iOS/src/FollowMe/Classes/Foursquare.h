@@ -7,25 +7,30 @@
 
 #import "HTTPRiot/HTTPRiot.h"
 #import "HTTPRiot/HRResponseDelegate.h"
-typedef void(^FoursquareCallback)(BOOL success, id result);
+
+@protocol FoursquareCallback <NSObject>
+@required
+- (void) callback:(BOOL) status resource:(id) resource;
+@end
+
 
 @interface Foursquare :  NSObject<HRResponseDelegate> {
 }
 
 
 
-+ (void)listCities:(FoursquareCallback)callback;
++ (void)listCities:(NSObject *)callback;
 
 + (void)cityNearestLatitude:(NSString *)geoLat 
 				  longitude:(NSString *)geoLong 
-				   callback:(FoursquareCallback)callback;
+				   callback:(NSObject *)callback;
 
 + (void)switchToCity:(NSNumber *)cityId 
-			callback:(FoursquareCallback)callback;
+			callback:(NSObject *)callback;
 
 + (void)recentFriendCheckinsNearLatitude:(NSNumber *)geoLat
 							   longitude:(NSNumber *)geoLong
-								callback:(FoursquareCallback)callback;
+								callback:(NSObject *)callback;
 
 + (void)checkinAtVenueId:(NSString *)venueId 
 			   venueName:(NSString *)venueName 
@@ -35,27 +40,27 @@ typedef void(^FoursquareCallback)(BOOL success, id result);
 			tellFacebook:(BOOL)tellFacebook
 				latitude:(NSString *)geolat
 			   longitude:(NSString *)geolong
-				callback:(FoursquareCallback)callback;
+				callback:(NSObject *)callback;
 
 + (void)checkinHistoryWithLimit:(NSNumber *)limit 
-					   callback:(FoursquareCallback)callback;
+					   callback:(NSObject *)callback;
 
 + (void)detailForUser:(NSNumber *)userId 
 		   showBadges:(BOOL)showBadges 
 			showMayor:(BOOL)showMayor 
-			 callback:(FoursquareCallback)callback;
+			 callback:(NSObject *)callback;
 
 + (void)friendsForUser:(NSNumber *)userId  			 
-			  callback:(FoursquareCallback)callback;
+			  callback:(NSObject *)callback;
 
 + (void)venuesNearLatitude:(double)geoLat 
 				 longitude:(double)geoLong
 				  matching:(NSString *)keywordSearch  
 					 limit:(NSNumber *)limit   
-				  callback:(FoursquareCallback)callback;
+				  callback:(NSObject *)callback;
 
 + (void)detailForVenue:(NSNumber *)venueId
-			  callback:(FoursquareCallback)callback;
+			  callback:(NSObject *)callback;
 
 + (void)addVenue:(NSString *)name 
 		 address:(NSString *)address 
@@ -65,52 +70,52 @@ typedef void(^FoursquareCallback)(BOOL success, id result);
 			 zip:(NSString *)zip
 		  cityId:(NSNumber *)cityId
 		   phone:(NSString *)phone
-		callback:(FoursquareCallback)callback;
+		callback:(NSObject *)callback;
 
 + (void)tipsNearLatitude:(NSString *)geoLat
 			   longitude:(NSString *)geoLong
 				   limit:(NSNumber *)limit 			
-				callback:(FoursquareCallback)callback;
+				callback:(NSObject *)callback;
 
 + (void)addTip:(NSString *)tip 
 	  forVenue:(NSNumber *)venueId 
-	  callback:(FoursquareCallback)callback;
+	  callback:(NSObject *)callback;
 
 + (void)addTodo:(NSString *)todo 
 	   forVenue:(NSNumber *)venueId 		
-	   callback:(FoursquareCallback)callback;
+	   callback:(NSObject *)callback;
 
-+ (void)friendRequests:(FoursquareCallback)callback;
++ (void)friendRequests:(NSObject *)callback;
 
 + (void)approveFriendRequest:(NSNumber *)userId 
-					callback:(FoursquareCallback)callback;
+					callback:(NSObject *)callback;
 
 + (void)denyFriendRequest:(NSNumber *)userId 
-				 callback:(FoursquareCallback)callback;
+				 callback:(NSObject *)callback;
 
 + (void)sendFriendRequest:(NSNumber *)userId
-				 callback:(FoursquareCallback)callback;
+				 callback:(NSObject *)callback;
 
 + (void)findFriendsByName:(NSString *)nameQuery
-				 callback:(FoursquareCallback)callback;
+				 callback:(NSObject *)callback;
 
 + (void)findFriendsByPhone:(NSString *)phoneNumberQuery
-				  callback:(FoursquareCallback)callback;
+				  callback:(NSObject *)callback;
 
 + (void)findFriendsByTwitter:(NSString *)twitterQuery
-					callback:(FoursquareCallback)callback;
+					callback:(NSObject *)callback;
 
-+ (void)setPingsOff:(FoursquareCallback)callback;
++ (void)setPingsOff:(NSObject *)callback;
 
-+ (void)setPingsOffFor:(NSNumber *)userId callback:(FoursquareCallback)callback;
++ (void)setPingsOffFor:(NSNumber *)userId callback:(NSObject *)callback;
 
-+ (void)setPingsOn:(FoursquareCallback)callback;
++ (void)setPingsOn:(NSObject *)callback;
 
-+ (void)setPingsOnFor:(NSNumber *)userId callback:(FoursquareCallback)callback;
++ (void)setPingsOnFor:(NSNumber *)userId callback:(NSObject *)callback;
 
-+ (void)goodnight:(FoursquareCallback)callback;
++ (void)goodnight:(NSObject *)callback;
 
-+ (void)test:(FoursquareCallback)callback;
++ (void)test:(NSObject *)callback;
 
 + (NSString *)fullAddressForVenue:(NSDictionary *)venueDict;
 

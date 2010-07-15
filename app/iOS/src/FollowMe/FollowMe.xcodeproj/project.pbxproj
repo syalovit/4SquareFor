@@ -44,6 +44,8 @@
 		33D24ED411EA75D0007953C6 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D24EB911EA75D0007953C6 /* NSStringAdditions.m */; };
 		33D24F8A11EA997E007953C6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D24F8911EA997E007953C6 /* CoreLocation.framework */; };
 		33D253B711EC194B007953C6 /* RecordingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D253B611EC194B007953C6 /* RecordingController.m */; };
+		33D2549D11ED612E007953C6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D2549C11ED612E007953C6 /* AVFoundation.framework */; };
+		33D2549F11ED6138007953C6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D2549E11ED6138007953C6 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +126,8 @@
 		33D24F8911EA997E007953C6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		33D253B511EC194B007953C6 /* RecordingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordingController.h; path = ../RecordingController.h; sourceTree = "<group>"; };
 		33D253B611EC194B007953C6 /* RecordingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordingController.m; path = ../RecordingController.m; sourceTree = "<group>"; };
+		33D2549C11ED612E007953C6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		33D2549E11ED6138007953C6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* FollowMe-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FollowMe-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +140,8 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				33D24F8A11EA997E007953C6 /* CoreLocation.framework in Frameworks */,
+				33D2549D11ED612E007953C6 /* AVFoundation.framework in Frameworks */,
+				33D2549F11ED6138007953C6 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +156,7 @@
 				33D24E6811EA75D0007953C6 /* HTTPRiot */,
 				33D2486011EA4CC6007953C6 /* Foursquare.h */,
 				33D2486111EA4CC6007953C6 /* Foursquare.m */,
+				33D24E8111EA75D0007953C6 /* Utilities */,
 				33D2482F11E93459007953C6 /* MyCLController.h */,
 				33D2483011E93459007953C6 /* MyCLController.m */,
 				33D2478311E92EA7007953C6 /* LocationTableViewController.m */,
@@ -209,6 +216,8 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				33D24F8911EA997E007953C6 /* CoreLocation.framework */,
+				33D2549C11ED612E007953C6 /* AVFoundation.framework */,
+				33D2549E11ED6138007953C6 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -229,7 +238,6 @@
 				33D24E7E11EA75D0007953C6 /* HRRestModel.m */,
 				33D24E7F11EA75D0007953C6 /* HTTPRiot.h */,
 				33D24E8011EA75D0007953C6 /* HTTPRiot_Prefix.pch */,
-				33D24E8111EA75D0007953C6 /* Utilities */,
 				33D24E8411EA75D0007953C6 /* Vendor */,
 			);
 			name = HTTPRiot;
@@ -270,8 +278,8 @@
 				33D24E8311EA75D0007953C6 /* HRBase64.m */,
 			);
 			name = Utilities;
-			path = Classes/HTTPRiot/Utilities;
-			sourceTree = SOURCE_ROOT;
+			path = HTTPRiot/Utilities;
+			sourceTree = "<group>";
 		};
 		33D24E8411EA75D0007953C6 /* Vendor */ = {
 			isa = PBXGroup;
@@ -499,6 +507,8 @@
 					"/usr/include/libxml2//**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				"Nested[arch=*]" = "-fnested-functions";
+				OTHER_CFLAGS = "-fnested-functions";
 				PREBINDING = NO;
 				SDKROOT = iphoneos4.0;
 				SHARED_PRECOMPS_DIR = "";
@@ -520,7 +530,8 @@
 					"/usr/include/libxml2//**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"Nested[arch=*]" = "-fnested-functions";
+				OTHER_CFLAGS = "-fnested-functions";
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-ObjC",

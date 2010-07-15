@@ -10,7 +10,6 @@
 @implementation LocationTableViewController
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
 	locationController = [[MyCLController alloc] init];
 	
 	[[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
@@ -20,6 +19,7 @@
 	[locationController.locationManager startUpdatingLocation];
 	venuesNearMeNow = [[NSMutableArray alloc] initWithCapacity:10];
 	now = [[Event alloc] init];
+	now.location = [[VenueRecord alloc] init];
 }
 
 
@@ -62,10 +62,37 @@
 }
 
 
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	// There is only one section.
 	return 1;
 }
+
+-(void) callback:(BOOL) success result:(id) result
+{
+	if (!success) {
+		//  [self handleError:result forTask:@"nearbyVenues"];
+		return;
+	}
+	
+	NSDictionary *venuesDict = (NSDictionary *)result;
+	NSArray *groups = [venuesDict objectForKey:@"groups"];
+	
+	if ([venuesDict count] > 0) {
+		for (NSDictionary *groupDict in groups) {
+			for (NSDictionary *venueDict in [groupDict objectForKey:@"venues"]) {
+				VenueRecord *record = [ VenueRecord new];
+				record.venueDataDict = [venueDict copy];
+				record.geolat = now.location.geolat;
+				record.geolong = now.location.geolong;
+				[venuesNearMeNow addObject: record ];									  
+			}
+		}
+		
+	}
+	[self.tableView reloadData];
+}
+
 
 
 - (void)locationUpdate:(CLLocation *)location {
@@ -74,31 +101,10 @@
 						 longitude:location.coordinate.longitude
 						  matching:nil 
 							 limit:nil 
-						  callback:^(BOOL success, id result) {
-							  if (!success) {
-								//  [self handleError:result forTask:@"nearbyVenues"];
-								  return;
-							  }
-							  
-							  NSDictionary *venuesDict = (NSDictionary *)result;
-							  NSArray *groups = [venuesDict objectForKey:@"groups"];
-
-							  if ([venuesDict count] > 0) {
-								  for (NSDictionary *groupDict in groups) {
-									  for (NSDictionary *venueDict in [groupDict objectForKey:@"venues"]) {
-										  VenueRecord *record = [ VenueRecord new];
-										  record.venueDataDict = [venueDict copy];
-										  record.geolat = location.coordinate.latitude;
-										  record.geolong = location.coordinate.longitude;
-										  [venuesNearMeNow addObject: record ];									  
-									  }
-								  }
-							  
-							  }
-							  [self.tableView reloadData];
-						  }];
+							  callback:self];
 	CLLocationCoordinate2D  whereamI = [location coordinate];	
-
+	now.location.geolat = location.coordinate.latitude;
+	now.location.geolong = location.coordinate.longitude;
 	NSString *hor_accuracy_str = [NSString stringWithFormat:@"%f", [location horizontalAccuracy]];
 	float bat_level = [[UIDevice currentDevice] batteryLevel];
 	double time = [[location timestamp] timeIntervalSince1970];
